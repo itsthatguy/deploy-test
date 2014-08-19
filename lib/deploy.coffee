@@ -22,5 +22,6 @@ listFiles = (arr) ->
     dir = path.dirname(originalFile)
     fs.mkdirSync(dir) unless fs.existsSync(dir)
     exec "git show other:#{originalFile} >#{file}", (err, stdout, stderr) ->
-      exec "git push heroku master"
+      exec "git add .; git commit -m 'deployment'; git push"
+      exec "git push heroku deploy:master"
 
