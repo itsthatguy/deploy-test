@@ -18,7 +18,7 @@ tree.on 'close', (code) ->
 
 listFiles = (arr) ->
   for file, i in arr
-    originalFile = "source/#{value}"
+    originalFile = "source/#{file}"
     dir = path.dirname(originalFile)
     fs.mkdirSync(dir) unless fs.existsSync(dir)
     exec "git show other:#{originalFile} >#{file}", (err, stdout, stderr) ->
